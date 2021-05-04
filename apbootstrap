@@ -1,0 +1,14 @@
+#!/bin/sh
+
+export APERIOLIVE=aplive
+mkdir ./$APERIOLIVE
+
+sudo debootstrap \
+	--arch=amd64 \
+	--variant=minbase \
+	stable ./$APERIOLIVE/chroot \
+	http://deb.debian.org/debian
+
+sudo cp ./apchroot ./$APERIOLIVE/chroot/bin/apchroot
+
+sudo chroot ./$APERIOLIVE/chroot

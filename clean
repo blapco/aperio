@@ -1,0 +1,7 @@
+#!/bin/sh
+
+source ./apconfig
+
+sudo rm -rf ./$APERIOLIVE
+sudo rm -rf ./ap*
+sudo rm -rf ./apconfig

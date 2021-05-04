@@ -1,0 +1,41 @@
+#!/bin/sh
+
+# Aperio GNU/Linux Installer.
+# — Biel A. P.
+
+ask() {
+ echo "Press 'Enter' to continue or 'Ctrl C' to exit now."
+ read -r _
+}
+
+echo "Is the disk already configured?"
+ask
+
+unsquashfs -f -i -d $1 /opt/filesystem.squashfs
+
+echo "Installation done! You can chroot into the system now!"
+
+#cp /etc/fstab /mnt/etc/fstab
+#cp /etc/apt/sources.list /mnt/etc/apt/sources.list
+##cp /etc/apt/default-release /mnt/etc/apt/apt.conf.d
+#cp /etc/hosts /mnt/etc/hosts
+
+#mount -t sysfs sysfs /mnt/sys
+#mount -t proc proc /mnt/proc
+#mount -o bind /dev /mnt/dev
+
+#echo "chrooting into installation."
+
+#chroot /mnt
+
+#export TERM=xterm-256color
+#echo "updating the system."
+#
+#apt-get update && apt-get upgrade
+#
+#echo "installing base packages."
+#
+#apt install sudo linux-image-amd64 initramfs-tools vim wpasupplicant isc-dhcp-common isc-dhcp-client curl wget git openssh-client openssh-server grub2
+#
+#echo "updating grub."
+#update-grub

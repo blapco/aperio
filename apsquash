@@ -1,0 +1,30 @@
+#!/bin/sh
+
+export APERIOLIVE=aplive
+
+#sudo rm -f ./$APERIOLIVE/chroot/bin/apchroot
+
+mkdir -p ./$APERIOLIVE/aproot
+mkdir -p ./$APERIOLIVE/image/live
+
+sudo mksquashfs ./$APERIOLIVE/chroot ./$APERIOLIVE/image/live/filesystem.squashfs
+
+cp ./$APERIOLIVE/chroot/boot/vmlinuz-* ./$APERIOLIVE/image/vmlinuz
+cp ./$APERIOLIVE/chroot/boot/initrd.img-* ./$APERIOLIVE/image/initrd
+
+cat <<EOF > ./$APERIOLIVE/aproot/grub.cfg
+search --set=root --file /APERIOLIVE
+insmod all_video
+set default="0"
+set timeout=30
+menuentry "Aperio GNU/Linux LiveCD" {
+    linux /vmlinuz boot=live quiet nomodeset
+    initrd /initrd
+}
+EOF
+
+touch ./$APERIOLIVE/image/APERIOLIVE
+
+ls -lh ./$APERIOLIVE
+ls -lRh ./$APERIOLIVE/aproot
+ls -lRh ./$APERIOLIVE/image
