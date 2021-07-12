@@ -6,11 +6,11 @@ echo "aperio" > /etc/hostname
 
 apt update 
 apt install -y --no-install-recommends linux-image-amd64 live-boot systemd-sysv
-apt install -y --no-install-recommends squashfs-tools vim wpasupplicant isc-dhcp-common isc-dhcp-client curl git wget openssh-client openssh-server 
+apt install -y --no-install-recommends locales dialog lsb-release squashfs-tools nano grub2 wpasupplicant isc-dhcp-common isc-dhcp-client curl git wget openssh-client openssh-server 
 apt clean
 
-echo -e "127.0.0.1\tlocalhost" > /etc/hosts
-echo -e "127.0.0.1\taperio" >> /etc/hosts
+echo "127.0.0.1\tlocalhost" > /etc/hosts
+echo "127.0.0.1\taperio" >> /etc/hosts
 
 passwd root
 

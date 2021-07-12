@@ -10,5 +10,6 @@ sudo debootstrap \
 	http://deb.debian.org/debian
 
 sudo cp ./apchroot ./$APERIOLIVE/chroot/bin/apchroot
+sudo cp ./apinstall ./$APERIOLIVE/chroot/bin/apinstall
 
 sudo chroot ./$APERIOLIVE/chroot

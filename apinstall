@@ -15,18 +15,18 @@ unsquashfs -f -i -d $1 /opt/filesystem.squashfs
 
 echo "Installation done! You can chroot into the system now!"
 
-#cp /etc/fstab /mnt/etc/fstab
-#cp /etc/apt/sources.list /mnt/etc/apt/sources.list
-##cp /etc/apt/default-release /mnt/etc/apt/apt.conf.d
-#cp /etc/hosts /mnt/etc/hosts
+cp /etc/fstab /mnt/etc/fstab
+cp /etc/apt/sources.list /mnt/etc/apt/sources.list
+#cp /etc/apt/default-release /mnt/etc/apt/apt.conf.d
+cp /etc/hosts /mnt/etc/hosts
 
-#mount -t sysfs sysfs /mnt/sys
-#mount -t proc proc /mnt/proc
-#mount -o bind /dev /mnt/dev
+mount -t sysfs sysfs /mnt/sys
+mount -t proc proc /mnt/proc
+mount -o bind /dev /mnt/dev
 
-#echo "chrooting into installation."
+echo "chrooting into installation."
 
-#chroot /mnt
+chroot /mnt
 
 #export TERM=xterm-256color
 #echo "updating the system."
