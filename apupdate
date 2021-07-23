@@ -1,0 +1,109 @@
+#!/bin/sh
+
+# Aperio GNU/Linux updater.
+# — Biel A. P.
+
+echo "Updgrading Aperio GNU/Linux."
+
+apt update
+
+apt upgrade
+
+apt dist-upgrade
+
+cat > /etc/issue <<EOF
+ _.._  _ ._.. _
+(_][_)(/,[  |(_)
+   |   GNU/Linux
+
+EOF
+
+cat > /etc/os-release <<EOF
+PRETTY_NAME="Aperio GNU/Linux"
+NAME="Aperio GNU/Linux"
+VERSION_ID="2"
+VERSION="2.0"
+VERSION_CODENAME=aperio
+ID=aperio
+HOME_URL="https://b-ap.xyz/agl/"
+SUPPORT_URL="https://b-ap.xyz/agl/"
+BUG_REPORT_URL="https://b-ap.xyz/agl/"
+EOF
+
+if [ -e /etc/debian_version ]
+then
+    rm /etc/debian_version
+fi
+
+cat > /etc/default/useradd <<EOF
+SHELL=/bin/bash
+EOF
+
+cat > /etc/grub.d/05_debian_theme <<EOF
+#!/bin/sh
+set -e
+
+# grub-mkconfig helper script.
+# Copyright (C) 2010  Alexander Kurtz <kurtz.alex@googlemail.com>
+#
+# GRUB is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# GRUB is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
+
+# Include the GRUB helper library for grub-mkconfig.
+. /usr/share/grub/grub-mkconfig_lib
+
+# We want to work in /boot/grub/ only.
+test -d /boot/grub; cd /boot/grub
+
+# Set the location of a possibly necessary cache file for the background image.
+# NOTE: This MUST BE A DOTFILE to avoid confusing it with user-defined images.
+BACKGROUND_CACHE=".background_cache"
+
+set_default_theme(){
+	case $GRUB_DISTRIBUTOR in
+		Aperio|Tanglu|Ubuntu|Kubuntu)
+			# Set a monochromatic theme for Tanglu/Ubuntu.
+			echo "${1}set menu_color_normal=white/black"
+			echo "${1}set menu_color_highlight=black/light-gray"
+
+			if [ -e /usr/share/plymouth/themes/default.grub ]; then
+				sed "s/^/${1}/" /usr/share/plymouth/themes/default.grub
+			fi
+			# For plymouth backward compatiblity. Can be removed
+			# after xenial.
+			if [ -e /lib/plymouth/themes/default.grub ]; then
+				sed "s/^/${1}/" /lib/plymouth/themes/default.grub
+			fi
+			;;
+		*)
+			# Set the traditional Debian blue theme.
+			echo "${1}set menu_color_normal=cyan/blue"
+			echo "${1}set menu_color_highlight=white/blue"
+			;;
+	esac
+}
+
+module_available(){
+	local module
+	for module in "${1}.mod" */"${1}.mod"; do
+		if [ -f "${module}" ]; then
+			return 0
+		fi
+	done
+	return 1
+}
+
+set_default_theme
+EOF
+
+echo "Done! Please, reboot your computer to complete the upgrade."
