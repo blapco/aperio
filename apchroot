@@ -4,7 +4,9 @@ export APERIOLIVE=aplive
 
 echo "aperio" > /etc/hostname
 
-apt update 
+echo "deb http://deb.debian.org/debian stable main contrib non-free" > /etc/apt/sources.list
+
+apt update
 apt install -y --no-install-recommends linux-image-amd64 live-boot systemd-sysv
 apt install -y --no-install-recommends locales dialog lsb-release squashfs-tools nano grub2 wpasupplicant isc-dhcp-common isc-dhcp-client curl git wget openssh-client openssh-server 
 apt clean

@@ -11,5 +11,6 @@ sudo debootstrap \
 
 sudo cp ./apchroot ./$APERIOLIVE/chroot/bin/apchroot
 sudo cp ./apinstall ./$APERIOLIVE/chroot/bin/apinstall
+sudo cp ./apupdate ./$APERIOLIVE/chroot/bin/apupdate
 
 sudo chroot ./$APERIOLIVE/chroot

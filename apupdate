@@ -35,6 +35,17 @@ then
     rm /etc/debian_version
 fi
 
+if [ -e /etc/motd ]
+then
+    rm /etc/motd
+fi
+
+cat > /etc/update-motd.d/10-uname <<EOF
+#!/bin/sh
+
+echo "Welcome to Aperio GNU/Linux!"
+EOF
+
 cat > /etc/default/useradd <<EOF
 SHELL=/bin/bash
 EOF
