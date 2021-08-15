@@ -81,7 +81,7 @@ test -d /boot/grub; cd /boot/grub
 BACKGROUND_CACHE=".background_cache"
 
 set_default_theme(){
-	case $GRUB_DISTRIBUTOR in
+	case \$GRUB_DISTRIBUTOR in
 		Aperio|Tanglu|Ubuntu|Kubuntu)
 			# Set a monochromatic theme for Tanglu/Ubuntu.
 			echo "${1}set menu_color_normal=white/black"
