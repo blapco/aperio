@@ -1,3 +1,5 @@
+Build Steps.
+
 1. aptoolchain
 2. apbootstrap
 3. apchroot (run inside Aperio GNU/Linux chroot.)
@@ -12,5 +14,19 @@
     copy ./aplive/image/live/filesystem.squashfs to aplive/chroot/opt
 5. apsquash (to update the squashed fs)
 6. apmkiso
+
+Done!
+
+Installation Steps
+
+1. Configure disks.
+2. Mount root disk to /mnt.
+3, Run 'apinstall /mnt'
+4. Run 'apchroot'
+5. Configure locales and other personal stuff.
+6. Add a user.
+7. Set a password.
+8. Unmount everything.
+9. Reboot.
 
 Done!
