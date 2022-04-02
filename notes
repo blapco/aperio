@@ -12,6 +12,7 @@ Build Steps.
     change /etc/grub.d/05_debian_theme and include Aperio on "set_default_theme(){ case $GRUB_DISTRIBUTOR in Aperio }"
 4. apsquash
     copy ./aplive/image/live/filesystem.squashfs to aplive/chroot/opt
+    delete ./aplive/image/live
 5. apsquash (to update the squashed fs)
 6. apmkiso
 
