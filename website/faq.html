@@ -9,30 +9,37 @@
   <body>
     <header>
       <div class="logo">
-        <a href="./index.html">
+        <a style="color:black;text-decoration:none;" href="./index.html">
         <pre>
  _.._  _ ._.. _ 
 (_][_)(/,[  |(_)
-   |   GNU/Linux
+   |   <span style="font-weight:normal;">GNU/Linux</span>
         </pre>
-        </a>
       </div>
-      <div class="nav">
+      <nav id="menuwrap">
         <a href="./about.html">About</a>
         <a href="./download.html">Download</a>
-        <a>FAQ</a>
+        <a href="./faq.html">FAQ</a>
         <a href="https://git.blapco.xyz/aperio" href="_blank">Source Code</a>
-      </div>
+      </nav>
     </header>
     <main>
-      <h1>FAQ</h1>
-      <b>Who is behind Aperio GNU/Linux?</b>
-      <p><a href="https://bl.blapco.xyz" targe="_blank">Biel Polastrini</a>.</p>
-      <b>When does a new version gets released?</b>
-      <p>Whenever Debian GNU/Linux gets updated.</p>
-
-      <b>Which architectures does Aperio support?</b>
-      <p>x86_64.</p>
+      <div id="intro">
+	      <h2>Who is behind Aperio GNU/Linux?</h2>
+	      <p><a href="https://bl.blapco.xyz" target="_blank">Biel Polastrini</a>.</p>
+	      <h2>When does a new version gets released?</h2>
+	      <p>Whenever Debian GNU/Linux gets updated.</p>
+	
+	      <h2>Which architectures does Aperio support?</h2>
+	      <p>x86_64.</p>
+	
+	      <h2>Why another GNU/Linux distribution?</h2>
+	      <ol>
+	        <li>I wanted a big project to work on.</li>
+	        <li>I've always wanted to have a GNU/Linux distribution of my own, I tried it before but got overwhelmed by package management. That's one of the reasons I chose to base Aperio GNU/Linux on Debian.</li>
+	        <li>This one is tailored for me. I got tired of repeating the same installation proccess everytime I needed to install Debian on a new computer, so, Aperio handles everything.</li>
+	      </ol>
+      </div>
     </main>
     <footer>
       Copyright &copy; 2022 <a href="https://blapco.xyz" target="_blank">blapco</a>. All rights reserved.

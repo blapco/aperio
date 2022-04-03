@@ -9,24 +9,32 @@
   <body>
     <header>
       <div class="logo">
-        <a href="./index.html">
+        <a style="color:black;text-decoration:none;" href="./index.html">
         <pre>
  _.._  _ ._.. _ 
 (_][_)(/,[  |(_)
-   |   GNU/Linux
+   |   <span style="font-weight:normal;">GNU/Linux</span>
         </pre>
-        </a>
       </div>
-      <div class="nav">
-        <a>About</a>
+      <nav id="menuwrap">
+        <a href="./about.html">About</a>
         <a href="./download.html">Download</a>
         <a href="./faq.html">FAQ</a>
         <a href="https://git.blapco.xyz/aperio" href="_blank">Source Code</a>
-      </div>
+      </nav>
     </header>
     <main>
-      <h1>About</h1>
-      <p>Aperio started in 2020. It was meant to be just a Debian GNU/Linux installation script, but after some modifications I decided to make a Debian-based distribution.</p>
+      <div id="intro">
+      <p>Aperio started in 2020. It was meant to be just a Debian GNU/Linux installation script, but after some modifications I decided to make a Debian-based distribution. My goals were stability and the possibility to use it in Desktops and servers.</p>
+      <h2>Features</h2>
+      <ul>
+        <li>Stable.</li>
+        <li>No default window manager.</li>
+        <li>No default desktop manager.</li>
+        <li>No default display manager.</li>
+        <li>Easy installation.</li>
+      </ul>
+      </div>
     </main>
     <footer>
       Copyright &copy; 2022 <a href="https://blapco.xyz" target="_blank">blapco</a>. All rights reserved.
