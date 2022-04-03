@@ -8,7 +8,7 @@ echo "deb http://deb.debian.org/debian stable main contrib non-free" > /etc/apt/
 
 apt update
 apt install -y --no-install-recommends linux-image-amd64 live-boot systemd-sysv
-apt install -y --no-install-recommends fdisk locales dialog lsb-release squashfs-tools nano grub2 wpasupplicant isc-dhcp-common isc-dhcp-client curl git wget openssh-client openssh-server 
+apt install -y --no-install-recommends firmware-brcm80211 firmware-intelwimax firmware-iwlwifi firmware-libertas firmware-misc-nonfree firmware-realtek firmware-ti-connectivity fdisk locales dialog lsb-release squashfs-tools nano grub2 wpasupplicant inetutils-ping isc-dhcp-common isc-dhcp-client curl git wget openssh-client openssh-server 
 apt clean
 
 echo "127.0.0.1\tlocalhost" > /etc/hosts
