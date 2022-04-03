@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <link rel="stylesheet" href="./styles.css"/>
+    <title>Aperio GNU/Linux | Download</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Aperio GNU/Linux download instructions."/>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <a href="./index.html">
+        <pre>
+ _.._  _ ._.. _ 
+(_][_)(/,[  |(_)
+   |   GNU/Linux
+        </pre>
+        </a>
+      </div>
+      <div class="nav">
+        <a href="./about.html">About</a>
+        <a>Download</a>
+        <a href="./faq.html">FAQ</a>
+        <a href="https://git.blapco.xyz/aperio" href="_blank">Source Code</a>
+      </div>
+    </header>
+    <main>
+      <h1>Download Aperio GNU/Linux</h1>
+      <a href="./static/iso/APERIO-LIVECD.iso">Download</a> &mdash; 760M.
+
+      <details>
+        <summary>Pre-installed packages.</summary>
+        <ul>
+          <li>linux-image-amd64</li>
+          <li>live-boot</li>
+          <li>systemd-sysv</li>
+          <li>firmware-brcm80211</li>
+          <li>firmware-intelwimax</li>
+          <li>firmware-iwlwifi</li>
+          <li>firmware-libertas</li>
+          <li>firmware-misc-nonfree</li>
+          <li>firmware-realtek</li>
+          <li>firmware-ti-connectivity</li>
+          <li>fdisk</li>
+          <li>locales</li>
+          <li>dialog</li>
+          <li>lsb-release</li>
+          <li>squashfs-tools</li>
+          <li>nano</li>
+          <li>grub2</li>
+          <li>wpasupplicant</li>
+          <li>inetutils-ping</li>
+          <li>isc-dhcp-common</li>
+          <li>isc-dhcp-client</li>
+          <li>curl</li>
+          <li>git</li>
+          <li>wget</li>
+          <li>openssh-client</li>
+          <li>openssh-server</li>
+        </ul>
+      </details>
+
+      <h2>Installation Instructions</h2>
+      <ol>
+        <li>
+          Configure disks. My current configuration is:
+          <br/>
+          <pre>/dev/sda1 &mdash; primary &mdash; almost full disk size &mdash; type: Linux.</pre>
+          <pre>/dev/sda2 &mdash; extended &mdash; the rest of the disk size &mdash; type: Extended.
+    /dev/sda5 &mdash; type: Swap.
+          </pre>
+
+          <pre>
+mkfs.ext4 /dev/sda1.
+mkswap /dev/sda5.
+          </pre>
+        <li>Mount root disk to <code>/mnt</code>.</li>
+        <li>Run <code>apinstall /mnt</code>.</li>
+        <li>Inside Aperio <code>chroot</code>, run <code>apchroot</code>.</li>
+        <li>Configure locales and other personal stuff.</li>
+        <li>Add an user.</li>
+        <li>Add the user to the video, audio and input groups:
+          <br/>
+          <code>usermod -a -G audio,video,input $USER</code>
+        </li>
+        <li>Set a password for the user:
+          <br/>
+          <code>passwd $USER</code>
+        </li>
+        <li>Set a password for the root user:
+          <br/>
+          <code>passwd root</code>
+        </li>
+        <li>Setup GRUB:
+          <br/>
+          <code>grub-install /dev/sda --root-directory=/</code>
+          <code>update-grub</code>
+        </li>
+        <li>Exit Aperio <code>chroot</code>.</li>
+        <li>Unmount everything:
+          <br/>
+          <code>umount /mnt/*</code>
+          <code>umount /dev/sda1</code>
+        </li>
+        <li>Reboot</li>
+        <li>Done!</li>
+      </ol>
+    </main>
+    <footer>
+      Copyright &copy; 2022 <a href="https://blapco.xyz" target="_blank">blapco</a>. All rights reserved.
+    </footer>
+  </body>
+</html>
