@@ -7,7 +7,8 @@ Build Steps.
     change /etc/os-release
     change /etc/issue
     delete /etc/debian_version
-    add "Welcome to Aperio GNU/Linux!" to /etc/update-motd.d/10-uname.
+    delete contents inside /etc/motd
+    add echo "Welcome to Aperio GNU/Linux!" to /etc/update-motd.d/10-uname.
     change /etc/default/useradd and replace "SHELL=/bin/sh" with "SHELL/bin/bash"
     change /etc/grub.d/05_debian_theme and include Aperio on "set_default_theme(){ case $GRUB_DISTRIBUTOR in Aperio }"
 4. apsquash
@@ -32,10 +33,12 @@ Installation Steps
 3, Run 'apinstall /mnt'
 4. Run 'apchroot'
 5. Configure locales and other personal stuff.
-6. Add a user.
+6. Add a user, add it to the audio, video and input groups
+    - usermod -a -G video,input,audio $USER 
 7. Set a password for the new user and for the root user.
 8. Setup GRUB
     - grub-install /dev/sdX --root-directory=/
+    - update-grub
 9. Unmount everything.
 10. Reboot.
 
