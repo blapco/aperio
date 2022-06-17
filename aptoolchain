@@ -1,8 +1,3 @@
 #!/bin/sh
 
-apt install -y debootstrap
-apt install -y xorriso
-apt install -y grub-pc-bin
-apt install -y squashfs-tools dosfstools
-apt install -y grub-efi-amd64-bin
-apt install -y mtools
+apt install -y debootstrap xorriso grub-pc-bin squashfs-tools dosfstools grub-efi-amd64-bin mtools
